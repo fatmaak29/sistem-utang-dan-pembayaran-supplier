@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Sistem Utang & Pembayaran Supplier | PT Fatma Furniture
+    </title>
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         CSS
+    ====================================================== -->
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+
+<!-- =========================================================
+     SIDEBAR
+========================================================= -->
+
+<aside class="sidebar">
+
+    <!-- BRAND -->
+    <div class="brand">
+
+        <div class="brand-icon">
+            <i class="fa-solid fa-couch"></i>
+        </div>
+
+        <div class="brand-text">
+
+            <h2>
+                PT Fatma Furniture
+            </h2>
+
+            <p>
+                Sistem Utang & Pembayaran Supplier
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- MENU -->
+    <nav class="menu">
+
+
+        <!-- DASHBOARD -->
+        <button
+            type="button"
+            class="menu-item active"
+            data-page="dashboard"
+        >
+
+            <i class="fa-solid fa-house"></i>
+
+            <span>
+                Dashboard
+            </span>
+
+        </button>
+
+
+        <!-- SUPPLIER -->
+        <button
+            type="button"
+            class="menu-item"
+            data-page="supplier"
+        >
+
+            <i class="fa-solid fa-truck-field"></i>
+
+            <span>
+                Data Supplier
+            </span>
+
+        </button>
+
+
+        <!-- UTANG -->
+        <button
+            type="button"
+            class="menu-item"
+            data-page="utang"
+        >
+
+            <i class="fa-solid fa-file-invoice-dollar"></i>
+
+            <span>
+                Data Utang
+            </span>
+
+        </button>
+
+
+        <!-- PEMBAYARAN -->
+        <button
+            type="button"
+            class="menu-item"
+            data-page="pembayaran"
+        >
+
+            <i class="fa-solid fa-money-bill-transfer"></i>
+
+            <span>
+                Pembayaran
+            </span>
+
+        </button>
+
+
+    </nav>
+
+
+    <!-- FOOTER SIDEBAR -->
+    <div class="sidebar-footer">
+
+        <p>
+            PT Fatma Furniture
+        </p>
+
+        <small>
+            Supplier Management System
+        </small>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="main">
+
+
+    <!-- =====================================================
+         TOPBAR
+    ====================================================== -->
+
+    <header class="topbar">
+
+        <div class="topbar-left">
+
+            <button
+                type="button"
+                id="toggleSidebar"
+                class="toggle-sidebar"
+            >
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+
+            <div>
+
+                <h1>
+                    Sistem Utang & Pembayaran Supplier
+                </h1>
+
+                <p>
+                    PT Fatma Furniture
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="topbar-right">
+
+            <div class="admin-avatar">
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+            <div class="admin-info">
+
+                <strong>
+                    Administrator
+                </strong>
+
+                <span>
+                    PT Fatma Furniture
+                </span>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         CONTENT
+    ====================================================== -->
+
+    <div class="content">
+
+
+
+        <!-- =================================================
+             DASHBOARD
+        ================================================== -->
+
+        <section
+            id="page-dashboard"
+            class="page active"
+        >
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="page-header">
+
+                <div>
+
+                    <h2>
+                        Dashboard
+                    </h2>
+
+                    <p>
+                        Ringkasan utang dan pembayaran supplier
+                        PT Fatma Furniture.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- STATISTIC CARDS -->
+
+            <div class="stats-grid">
+
+
+                <!-- TOTAL SUPPLIER -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+
+                        <i class="fa-solid fa-truck"></i>
+
+                    </div>
+
+
+                    <div class="stat-info">
+
+                        <span>
+                            Total Supplier
+                        </span>
+
+                        <h3 id="totalSupplier">
+                            0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- TOTAL UTANG -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+
+                    </div>
+
+
+                    <div class="stat-info">
+
+                        <span>
+                            Total Utang
+                        </span>
+
+                        <h3 id="totalUtang">
+                            Rp0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- TOTAL DIBAYAR -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                    </div>
+
+
+                    <div class="stat-info">
+
+                        <span>
+                            Total Dibayar
+                        </span>
+
+                        <h3 id="totalDibayar">
+                            Rp0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SISA UTANG -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+
+                        <i class="fa-solid fa-wallet"></i>
+
+                    </div>
+
+
+                    <div class="stat-info">
+
+                        <span>
+                            Sisa Utang
+                        </span>
+
+                        <h3 id="sisaUtang">
+                            Rp0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- INFORMASI -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>
+                            Informasi Sistem
+                        </h3>
+
+                        <p>
+                            Sistem pengelolaan utang dan pembayaran
+                            supplier PT Fatma Furniture.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-info">
+
+                    <div class="info-box">
+
+                        <i class="fa-solid fa-truck"></i>
+
+                        <div>
+
+                            <strong>
+                                Supplier
+                            </strong>
+
+                            <p>
+                                Kelola data supplier yang bekerja sama
+                                dengan perusahaan.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+
+                        <div>
+
+                            <strong>
+                                Utang Supplier
+                            </strong>
+
+                            <p>
+                                Catat transaksi utang dan tanggal
+                                jatuh tempo.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <i class="fa-solid fa-money-bill-transfer"></i>
+
+                        <div>
+
+                            <strong>
+                                Pembayaran
+                            </strong>
+
+                            <p>
+                                Catat pembayaran dan pantau sisa utang.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             DATA SUPPLIER
+        ================================================== -->
+
+        <section
+            id="page-supplier"
+            class="page"
+        >
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="page-header">
+
+                <div>
+
+                    <h2>
+                        Data Supplier
+                    </h2>
+
+                    <p>
+                        Tambah, ubah, hapus, dan cari data supplier.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FORM SUPPLIER -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3 id="judulSupplier">
+                            Tambah Supplier
+                        </h3>
+
+                        <p>
+                            Masukkan informasi supplier.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <form id="formSupplier">
+
+
+                    <div class="form-grid">
+
+
+                        <!-- NAMA SUPPLIER -->
+
+                        <div class="form-group">
+
+                            <label for="namaSupplier">
+
+                                Nama Supplier
+                                <span class="required">
+                                    *
+                                </span>
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="namaSupplier"
+                                placeholder="Contoh: PT Maju Furniture"
+                                required
+                            >
+
+                        </div>
+
+
+
+                        <!-- NO TELEPON -->
+
+                        <div class="form-group">
+
+                            <label for="noTelp">
+                                No. Telepon
+                            </label>
+
+                            <input
+                                type="text"
+                                id="noTelp"
+                                placeholder="Contoh: 081234567890"
+                            >
+
+                        </div>
+
+
+
+                        <!-- ALAMAT -->
+
+                        <div class="form-group full">
+
+                            <label for="alamat">
+                                Alamat
+                            </label>
+
+                            <textarea
+                                id="alamat"
+                                rows="3"
+                                placeholder="Masukkan alamat supplier"
+                            ></textarea>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- BUTTON -->
+
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            id="btnSupplier"
+                            class="btn primary"
+                        >
+
+                            <i class="fa-solid fa-floppy-disk"></i>
+
+                            Simpan Supplier
+
+                        </button>
+
+
+                        <button
+                            type="reset"
+                            class="btn secondary"
+                        >
+
+                            <i class="fa-solid fa-rotate-left"></i>
+
+                            Reset
+
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+            </div>
+
+
+
+            <!-- TABEL SUPPLIER -->
+
+            <div class="card">
+
+                <div class="card-header table-header">
+
+                    <div>
+
+                        <h3>
+                            Daftar Supplier
+                        </h3>
+
+                        <p id="jumlahSupplier">
+                            0 supplier
+                        </p>
+
+                    </div>
+
+
+                    <!-- SEARCH -->
+
+                    <div class="search-box">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="text"
+                            id="cariSupplier"
+                            placeholder="Cari supplier..."
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="table-responsive">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    No
+                                </th>
+
+                                <th>
+                                    Nama Supplier
+                                </th>
+
+                                <th>
+                                    Alamat
+                                </th>
+
+                                <th>
+                                    No. Telepon
+                                </th>
+
+                                <th>
+                                    Aksi
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="tabelSupplier">
+
+                            <tr>
+
+                                <td
+                                    colspan="5"
+                                    class="empty"
+                                >
+
+                                    Belum ada data supplier.
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             DATA UTANG
+        ================================================== -->
+
+        <section
+            id="page-utang"
+            class="page"
+        >
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="page-header">
+
+                <div>
+
+                    <h2>
+                        Data Utang
+                    </h2>
+
+                    <p>
+                        Kelola data utang supplier
+                        PT Fatma Furniture.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FORM UTANG -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3 id="judulUtang">
+                            Tambah Utang
+                        </h3>
+
+                        <p>
+                            Masukkan informasi transaksi utang supplier.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <form id="formUtang">
+
+
+                    <div class="form-grid">
+
+
+                        <!-- SUPPLIER -->
+
+                        <div class="form-group">
+
+                            <label for="supplierUtang">
+
+                                Supplier
+                                <span class="required">
+                                    *
+                                </span>
+
+                            </label>
+
+
+                            <select
+                                id="supplierUtang"
+                                required
+                            >
+
+                                <option value="">
+                                    Pilih Supplier
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+
+                        <!-- TANGGAL UTANG -->
+
+                        <div class="form-group">
+
+                            <label for="tanggalUtang">
+
+                                Tanggal Utang
+                                <span class="required">
+                                    *
+                                </span>
+
+                            </label>
+
+                            <input
+                                type="date"
+                                id="tanggalUtang"
+                                required
+                            >
+
+                        </div>
+
+
+
+                        <!-- JATUH TEMPO -->
+
+                        <div class="form-group">
+
+                            <label for="jatuhTempo">
+                                Jatuh Tempo
+                            </label>
+
+                            <input
+                                type="date"
+                                id="jatuhTempo"
+                            >
+
+                        </div>
+
+
+
+                        <!-- JUMLAH UTANG -->
+
+                        <div class="form-group">
+
+                            <label for="jumlahUtang">
+
+                                Jumlah Utang
+                                <span class="required">
+                                    *
+                                </span>
+
+                            </label>
+
+                            <input
+                                type="number"
+                                id="jumlahUtang"
+                                min="1"
+                                step="1"
+                                placeholder="Contoh: 5000000"
+                                required
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- BUTTON -->
+
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            id="btnUtang"
+                            class="btn primary"
+                        >
+
+                            <i class="fa-solid fa-floppy-disk"></i>
+
+                            Simpan Utang
+
+                        </button>
+
+
+                        <button
+                            type="reset"
+                            class="btn secondary"
+                        >
+
+                            <i class="fa-solid fa-rotate-left"></i>
+
+                            Reset
+
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+            </div>
+
+
+
+            <!-- TABEL UTANG -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>
+                            Daftar Utang Supplier
+                        </h3>
+
+                        <p>
+                            Status pembayaran utang supplier.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="table-responsive">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    No
+                                </th>
+
+                                <th>
+                                    Supplier
+                                </th>
+
+                                <th>
+                                    Tanggal Utang
+                                </th>
+
+                                <th>
+                                    Jatuh Tempo
+                                </th>
+
+                                <th>
+                                    Jumlah Utang
+                                </th>
+
+                                <th>
+                                    Terbayar
+                                </th>
+
+                                <th>
+                                    Sisa
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Aksi
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="tabelUtang">
+
+                            <tr>
+
+                                <td
+                                    colspan="9"
+                                    class="empty"
+                                >
+
+                                    Belum ada data utang.
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             PEMBAYARAN
+        ================================================== -->
+
+        <section
+            id="page-pembayaran"
+            class="page"
+        >
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="page-header">
+
+                <div>
+
+                    <h2>
+                        Pembayaran
+                    </h2>
+
+                    <p>
+                        Catat pembayaran utang kepada supplier.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FORM PEMBAYARAN -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>
+                            Tambah Pembayaran
+                        </h3>
+
+                        <p>
+                            Pilih utang supplier yang akan dibayar.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <form id="formPembayaran">
+
+
+                    <div class="form-grid">
+
+
+                        <!-- UTANG -->
+
+                        <div class="form-group full">
+
+                            <label for="utangPembayaran">
+
+                                Utang Supplier
+                                <span class="required">
+                                    *
+                                </span>
+
+                            </label>
+
+
+                            <select
+                                id="utangPembayaran"
+                                required
+                            >
+
+                                <option value="">
+                                    Pilih Utang Supplier
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+
+                        <!-- TANGGAL PEMBAYARAN -->
+
+                        <div class="form-group">
+
+                            <label for="tanggalPembayaran">
+
+                                Tanggal Pembayaran
+                                <span class="required">
+                                    *
+                                </span>
+
+                            </label>
+
+                            <input
+                                type="date"
+                                id="tanggalPembayaran"
+                                required
+                            >
+
+                        </div>
+
+
+
+                        <!-- METODE -->
+
+                        <div class="form-group">
+
+                            <label for="metodePembayaran">
+
+                                Metode Pembayaran
+                                <span class="required">
+                                    *
+                                </span>
+
+                            </label>
+
+
+                            <select
+                                id="metodePembayaran"
+                                required
+                            >
+
+                                <option value="Tunai">
+                                    Tunai
+                                </option>
+
+                                <option value="Transfer Bank">
+                                    Transfer Bank
+                                </option>
+
+                                <option value="QRIS">
+                                    QRIS
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+
+                        <!-- JUMLAH BAYAR -->
+
+                        <div class="form-group full">
+
+                            <label for="jumlahBayar">
+
+                                Jumlah Bayar
+                                <span class="required">
+                                    *
+                                </span>
+
+                            </label>
+
+                            <input
+                                type="number"
+                                id="jumlahBayar"
+                                min="1"
+                                step="1"
+                                placeholder="Contoh: 1000000"
+                                required
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- BUTTON -->
+
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            class="btn primary"
+                        >
+
+                            <i class="fa-solid fa-money-bill-transfer"></i>
+
+                            Simpan Pembayaran
+
+                        </button>
+
+
+                        <button
+                            type="reset"
+                            class="btn secondary"
+                        >
+
+                            <i class="fa-solid fa-rotate-left"></i>
+
+                            Reset
+
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+            </div>
+
+
+
+            <!-- RIWAYAT PEMBAYARAN -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>
+                            Riwayat Pembayaran
+                        </h3>
+
+                        <p>
+                            Daftar pembayaran utang supplier.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="table-responsive">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    No
+                                </th>
+
+                                <th>
+                                    Supplier
+                                </th>
+
+                                <th>
+                                    Tanggal
+                                </th>
+
+                                <th>
+                                    Jumlah Bayar
+                                </th>
+
+                                <th>
+                                    Metode
+                                </th>
+
+                                <th>
+                                    Aksi
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="tabelPembayaran">
+
+                            <tr>
+
+                                <td
+                                    colspan="6"
+                                    class="empty"
+                                >
+
+                                    Belum ada pembayaran.
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </div>
+
+</main>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+
+<!--
+    1. LOAD LIBRARY SUPABASE TERLEBIH DAHULU
+-->
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+
+<!--
+    2. LOAD CONFIG DATABASE
+
+    Posisi index.html:
+    frontend/html/index.html
+
+    Posisi config:
+    backend/config.js
+
+    Maka harus naik 2 folder:
+    ../../backend/config.js
+-->
+<script
+    src="../../backend/config.js"
+></script>
+
+
+<!--
+    3. LOAD JAVASCRIPT APLIKASI
+-->
+<script
+    src="../js/script.js"
+></script>
+
+
+</body>
+
+</html>
