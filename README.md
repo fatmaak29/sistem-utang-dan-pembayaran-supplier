@@ -2,6 +2,17 @@
 
 Aplikasi pencatatan supplier, utang, dan pembayaran untuk PT Fatma Furniture. Antarmuka menggunakan HTML, CSS, dan JavaScript, sedangkan penyimpanan data serta logika pembayaran menggunakan PostgreSQL melalui Supabase.
 
+## ERD
+
+| Entitas | Primary key | Foreign key | Relasi dan fungsi |
+|---|---|---|---|
+| `supplier` | `id_supplier` | - | Satu supplier dapat memiliki banyak utang (`1:N`). |
+| `utang` | `id_utang` | `id_supplier` | Setiap utang dimiliki satu supplier; satu utang dapat memiliki banyak detail pembayaran (`1:N`). |
+| `pembayaran` | `id_pembayaran` | - | Satu transaksi pembayaran dapat memiliki satu atau lebih detail pembayaran (`1:N` pada alur normal). |
+| `detail_pembayaran` | `id_detail` | `id_pembayaran`, `id_utang` | Menghubungkan pembayaran dan utang serta mencatat nominal alokasi. Menjadi tabel penghubung relasi many-to-many antara pembayaran dan utang. |
+
+Dengan demikian, alur relasi utamanya adalah `supplier → utang → detail_pembayaran ← pembayaran`. Penjelasan lengkap ERD, kolom setiap tabel, kendala integritas, alur data, indeks, aturan bisnis, dan keamanan tersedia di [Dokumentasi Skema dan ERD](docs/skema-database-erd.md).
+
 ## Fitur
 
 - Ringkasan data utang dan pembayaran pada dashboard.
@@ -77,6 +88,3 @@ Frontend memanggil fungsi database berikut melalui Supabase RPC:
 
 Gunakan fungsi-fungsi tersebut untuk operasi terkait agar aturan konsistensi status dan nominal pembayaran diterapkan.
 
-## Dokumentasi Database
-
-Lihat [Dokumentasi Skema dan ERD](docs/skema-database-erd.md) untuk diagram relasi, kamus data, constraint, indeks, aturan bisnis, serta batasan skema.
