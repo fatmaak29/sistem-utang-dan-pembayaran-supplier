@@ -4,14 +4,43 @@ Aplikasi pencatatan supplier, utang, dan pembayaran untuk PT Fatma Furniture. An
 
 ## ERD
 
-| Entitas | Primary key | Foreign key | Relasi dan fungsi |
-|---|---|---|---|
-| `supplier` | `id_supplier` | - | Satu supplier dapat memiliki banyak utang (`1:N`). |
-| `utang` | `id_utang` | `id_supplier` | Setiap utang dimiliki satu supplier; satu utang dapat memiliki banyak detail pembayaran (`1:N`). |
-| `pembayaran` | `id_pembayaran` | - | Satu transaksi pembayaran dapat memiliki satu atau lebih detail pembayaran (`1:N` pada alur normal). |
-| `detail_pembayaran` | `id_detail` | `id_pembayaran`, `id_utang` | Menghubungkan pembayaran dan utang serta mencatat nominal alokasi. Menjadi tabel penghubung relasi many-to-many antara pembayaran dan utang. |
+```mermaid
+erDiagram
+  SUPPLIER ||--o{ UTANG : memiliki
+  UTANG ||--o{ DETAIL_PEMBAYARAN : dibayar_melalui
+  PEMBAYARAN ||--o{ DETAIL_PEMBAYARAN : memiliki_detail
 
-Dengan demikian, alur relasi utamanya adalah `supplier → utang → detail_pembayaran ← pembayaran`. Penjelasan lengkap ERD, kolom setiap tabel, kendala integritas, alur data, indeks, aturan bisnis, dan keamanan tersedia di [Dokumentasi Skema dan ERD](docs/skema-database-erd.md).
+  SUPPLIER {
+    BIGINT id_supplier PK
+    VARCHAR nama_supplier
+    TEXT alamat
+    VARCHAR no_telp
+  }
+
+  UTANG {
+    BIGINT id_utang PK
+    BIGINT id_supplier FK
+    DATE tanggal_utang
+    DATE jatuh_tempo
+    NUMERIC jumlah_utang
+    VARCHAR status
+  }
+
+  PEMBAYARAN {
+    BIGINT id_pembayaran PK
+    DATE tanggal_pembayaran
+    VARCHAR metode_pembayaran
+  }
+
+  DETAIL_PEMBAYARAN {
+    BIGINT id_detail PK
+    BIGINT id_pembayaran FK
+    BIGINT id_utang FK
+    NUMERIC jumlah_bayar
+  }
+```
+
+Relasi pembayaran dan utang terbentuk melalui `detail_pembayaran`, yang menyimpan nominal alokasi. Kardinalitas pada diagram mengikuti struktur foreign key database; satu pembayaran tanpa detail masih mungkin ada jika dibuat di luar fungsi aplikasi. Penjelasan lengkap ERD, kolom, kendala integritas, alur data, indeks, aturan bisnis, dan keamanan tersedia di [Dokumentasi Skema dan ERD](docs/skema-database-erd.md).
 
 ## Fitur
 
