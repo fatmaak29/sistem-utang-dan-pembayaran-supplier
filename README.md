@@ -1,8 +1,8 @@
-[Sistem Utang & Pembayaran Supplier | PT Fatma Furniture](https://fatmaak29.github.io/sistem-utang-dan-pembayaran-supplier/frontend/html/index.html)
-
 # Sistem Utang dan Pembayaran Supplier
 
-Aplikasi pencatatan supplier, utang, dan pembayaran untuk PT Fatma Furniture. Antarmuka menggunakan HTML, CSS, dan JavaScript, sedangkan penyimpanan data serta logika pembayaran menggunakan PostgreSQL melalui Supabase.
+Sistem berbasis web untuk mencatat utang supplier dan pembayaran serta memantau status pelunasannya di PT Fatma Furniture.
+
+🌐 **Demo website:** [Sistem Utang & Pembayaran Supplier | PT Fatma Furniture](https://fatmaak29.github.io/sistem-utang-dan-pembayaran-supplier/frontend/html/index.html)
 
 ## Fitur
 
