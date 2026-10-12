@@ -2,7 +2,7 @@
 
 Sistem berbasis web untuk mencatat utang supplier dan pembayaran serta memantau status pelunasannya di PT Fatma Furniture.
 
-🌐 **Demo website:** [Sistem Utang & Pembayaran Supplier | PT Fatma Furniture](https://fatmaak29.github.io/sistem-utang-dan-pembayaran-supplier/frontend/html/index.html)
+🌐 **Demo website:** (https://fatmaak29.github.io/sistem-utang-dan-pembayaran-supplier/frontend/html/index.html)
 
 ## Fitur
 
