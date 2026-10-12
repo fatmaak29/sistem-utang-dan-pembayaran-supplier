@@ -1,46 +1,8 @@
+[Sistem Utang & Pembayaran Supplier | PT Fatma Furniture](https://fatmaak29.github.io/sistem-utang-dan-pembayaran-supplier/frontend/html/index.html)
+
 # Sistem Utang dan Pembayaran Supplier
 
 Aplikasi pencatatan supplier, utang, dan pembayaran untuk PT Fatma Furniture. Antarmuka menggunakan HTML, CSS, dan JavaScript, sedangkan penyimpanan data serta logika pembayaran menggunakan PostgreSQL melalui Supabase.
-
-## ERD
-
-```mermaid
-erDiagram
-  SUPPLIER ||--o{ UTANG : memiliki
-  UTANG ||--o{ DETAIL_PEMBAYARAN : dibayar_melalui
-  PEMBAYARAN ||--o{ DETAIL_PEMBAYARAN : memiliki_detail
-
-  SUPPLIER {
-    BIGINT id_supplier PK
-    VARCHAR nama_supplier
-    TEXT alamat
-    VARCHAR no_telp
-  }
-
-  UTANG {
-    BIGINT id_utang PK
-    BIGINT id_supplier FK
-    DATE tanggal_utang
-    DATE jatuh_tempo
-    NUMERIC jumlah_utang
-    VARCHAR status
-  }
-
-  PEMBAYARAN {
-    BIGINT id_pembayaran PK
-    DATE tanggal_pembayaran
-    VARCHAR metode_pembayaran
-  }
-
-  DETAIL_PEMBAYARAN {
-    BIGINT id_detail PK
-    BIGINT id_pembayaran FK
-    BIGINT id_utang FK
-    NUMERIC jumlah_bayar
-  }
-```
-
-Relasi pembayaran dan utang terbentuk melalui `detail_pembayaran`, yang menyimpan nominal alokasi. Kardinalitas pada diagram mengikuti struktur foreign key database; satu pembayaran tanpa detail masih mungkin ada jika dibuat di luar fungsi aplikasi. Penjelasan lengkap ERD, kolom, kendala integritas, alur data, indeks, aturan bisnis, dan keamanan tersedia di [Dokumentasi Skema dan ERD](docs/skema-database-erd.md).
 
 ## Fitur
 
@@ -116,4 +78,8 @@ Frontend memanggil fungsi database berikut melalui Supabase RPC:
 - `perbarui_utang`: mengubah data utang tanpa mengizinkan nilai utang lebih kecil daripada pembayaran yang telah tercatat.
 
 Gunakan fungsi-fungsi tersebut untuk operasi terkait agar aturan konsistensi status dan nominal pembayaran diterapkan.
+
+## Dokumentasi Database
+
+Lihat [Dokumentasi Skema dan ERD](docs/skema-database-erd.md) untuk diagram relasi, kamus data, constraint, indeks, aturan bisnis, serta batasan skema.
 
